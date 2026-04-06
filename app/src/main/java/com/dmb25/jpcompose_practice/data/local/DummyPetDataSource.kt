@@ -73,6 +73,78 @@ object DummyPetDataSource {
             image = R.drawable.white_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[4]
+        ),
+        Pet(
+            id = 5,
+            name = "Cyrus",
+            age = "Baby",
+            gender = "Male",
+            color = "Black",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.yellow_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[3]
+        ),
+        Pet(
+            id = 6,
+            name = "Shelby",
+            age = "Baby",
+            gender = "Female",
+            color = "Choco",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.white_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[4]
+        ),
+        Pet(
+            id = 7,
+            name = "Cyrus",
+            age = "Baby",
+            gender = "Male",
+            color = "Black",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.yellow_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[3]
+        ),
+        Pet(
+            id = 8,
+            name = "Shelby",
+            age = "Baby",
+            gender = "Female",
+            color = "Choco",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.white_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[4]
+        ),
+        Pet(
+            id = 9,
+            name = "Cyrus",
+            age = "Baby",
+            gender = "Male",
+            color = "Black",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.yellow_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[3]
+        ),
+        Pet(
+            id = 10,
+            name = "Shelby",
+            age = "Baby",
+            gender = "Female",
+            color = "Choco",
+            breed = "Chihuahua",
+            location = "Toronto CA",
+            image = R.drawable.white_dog,
+            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+            owner = owner[4]
         )
     )
 }
