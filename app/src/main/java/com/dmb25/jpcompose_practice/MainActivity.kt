@@ -10,16 +10,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dmb25.jpcompose_practice.presentation.theme.JpcomposepracticeTheme
 import com.dmb25.jpcompose_practice.presentation.ui.home.HomeScreen
+import com.dmb25.jpcompose_practice.presentation.ui.home.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
+            val viewModel: HomeViewModel by viewModel()
+
             JpcomposepracticeTheme {
                 HomeScreen(
                     onToggle = {},
-                    onPetClick = {}
+                    onPetClick = {},
+                    viewModel = viewModel
                 )
             }
         }
