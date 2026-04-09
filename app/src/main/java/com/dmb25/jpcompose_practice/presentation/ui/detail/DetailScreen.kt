@@ -28,6 +28,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,12 +43,16 @@ import com.dmb25.jpcompose_practice.data.local.DummyPetDataSource
 import com.dmb25.jpcompose_practice.domain.model.Pet
 import com.dmb25.jpcompose_practice.presentation.ui.detail.components.ButtonAdaptMe
 import com.dmb25.jpcompose_practice.presentation.ui.home.components.GenderTag
+import com.dmb25.jpcompose_practice.presentation.ui.home.components.LoadingComponent
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(onNavigateUp: () -> Unit, index: Int) {
-    val pet = DummyPetDataSource.dogList[index]
+fun DetailScreen(
+    onNavigateUp: () -> Unit,
+    viewModel: DetailViewModel
+) {
+    val state = viewModel.uiState.collectAsState().value
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -79,36 +84,49 @@ fun DetailScreen(onNavigateUp: () -> Unit, index: Int) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            item {
-                AnimalImage(pet = pet)
-            }
-            item {
-                PetStory(pet = pet)
-            }
 
-            item {
-                PetDescription(pet = pet)
-            }
-            item {
-                PetInfo(pet = pet)
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-                OwnerInfo(pet)
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-                ButtonAdaptMe()
+            when(state){
+                is DetailUiState.Success -> {
+                    item {
+                        AnimalImage(pet = state.pet)
+                    }
+                    item {
+                        PetStory(pet = state.pet)
+                    }
+
+                    item {
+                        PetDescription(pet = state.pet)
+                    }
+                    item {
+                        PetInfo(pet = state.pet)
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        OwnerInfo(state.pet)
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        ButtonAdaptMe()
+                    }
+                }
+                is DetailUiState.Loading -> {
+                    item{ LoadingComponent() }
+                }
+                is DetailUiState.Error -> {
+                    item {
+                        Text(text = state.message)
+                    }
+                }
+
             }
         }
 
     }
 }
-
-
-
 
 
 @Composable
@@ -305,5 +323,5 @@ private fun InfoCard(modifier: Modifier = Modifier, title: String, subTitle: Str
 @Composable
 @Preview(showSystemUi = true)
 fun DetailScreenPreview() {
-    DetailScreen(onNavigateUp = {}, 1)
+//    DetailScreen(onNavigateUp = {}, 1)
 }

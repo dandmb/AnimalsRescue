@@ -13,7 +13,7 @@ object DummyPetDataSource {
         Owner(name = "Said", "Teacher", R.drawable.blue_dog),
         Owner(name = "Said", "Scientist", R.drawable.blue_dog),
     )
-    val dogList = listOf(
+    val dogList = mutableListOf(
         Pet(
             id = 0,
             name = "Hachiko",
@@ -33,7 +33,7 @@ object DummyPetDataSource {
             gender = "Male",
             color = "Gold",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "New York USA",
             image = R.drawable.blue_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[1]
@@ -45,7 +45,7 @@ object DummyPetDataSource {
             gender = "Female",
             color = "White",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Paris FRANCE",
             image = R.drawable.red_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[2]
@@ -57,7 +57,7 @@ object DummyPetDataSource {
             gender = "Male",
             color = "Black",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Istanbul TURKEY",
             image = R.drawable.yellow_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[3]
@@ -69,7 +69,7 @@ object DummyPetDataSource {
             gender = "Female",
             color = "Choco",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Québec CA",
             image = R.drawable.white_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[4]
@@ -81,7 +81,7 @@ object DummyPetDataSource {
             gender = "Male",
             color = "Black",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "California USA",
             image = R.drawable.yellow_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[3]
@@ -93,7 +93,7 @@ object DummyPetDataSource {
             gender = "Female",
             color = "Choco",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Dubai EAU",
             image = R.drawable.white_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[4]
@@ -105,7 +105,7 @@ object DummyPetDataSource {
             gender = "Male",
             color = "Black",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Dublin Germany",
             image = R.drawable.yellow_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[3]
@@ -117,7 +117,7 @@ object DummyPetDataSource {
             gender = "Female",
             color = "Choco",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Montpellier FRANCE",
             image = R.drawable.white_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[4]
@@ -129,7 +129,7 @@ object DummyPetDataSource {
             gender = "Male",
             color = "Black",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "St Petersburg RUSSIA",
             image = R.drawable.yellow_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[3]
@@ -141,7 +141,7 @@ object DummyPetDataSource {
             gender = "Female",
             color = "Choco",
             breed = "Chihuahua",
-            location = "Toronto CA",
+            location = "Kinshasa CD",
             image = R.drawable.white_dog,
             description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             owner = owner[4]

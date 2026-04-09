@@ -8,10 +8,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.dmb25.jpcompose_practice.presentation.mapper.toRoute
+import com.dmb25.jpcompose_practice.presentation.navigation.Screen
 import com.dmb25.jpcompose_practice.presentation.theme.JpcomposepracticeTheme
+import com.dmb25.jpcompose_practice.presentation.ui.detail.DetailScreen
+import com.dmb25.jpcompose_practice.presentation.ui.detail.DetailViewModel
 import com.dmb25.jpcompose_practice.presentation.ui.home.HomeScreen
 import com.dmb25.jpcompose_practice.presentation.ui.home.HomeViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,14 +28,41 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            val viewModel: HomeViewModel by viewModel()
+            val navController = rememberNavController()
 
             JpcomposepracticeTheme {
-                HomeScreen(
-                    onToggle = {},
-                    onPetClick = {},
-                    viewModel = viewModel
-                )
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ) {
+
+                    composable("home") {
+                        val homeViewModel: HomeViewModel = koinViewModel()
+                        HomeScreen(
+                            onPetClick = { id ->
+                                navController.navigate(
+                                    Screen.Detail(id).toRoute()
+                                )
+                            },
+                            onToggle = {  },
+                            viewModel = homeViewModel
+                        )
+                    }
+
+                    composable(
+                        route = "detail/{petId}",
+                        arguments = listOf(
+                            navArgument("petId") { type = NavType.IntType }
+                        )
+                    ) {
+                        val detailViewModel: DetailViewModel = koinViewModel()
+                        DetailScreen(
+                            onNavigateUp = { navController.navigateUp() },
+                            viewModel = detailViewModel
+                        )
+                    }
+                }
+
             }
         }
     }
