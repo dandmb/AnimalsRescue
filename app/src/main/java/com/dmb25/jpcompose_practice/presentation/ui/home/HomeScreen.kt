@@ -13,6 +13,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+<<<<<<< HEAD:app/src/main/java/com/dmb25/jpcompose_practice/presentation/ui/home/HomeScreen.kt
+=======
+import androidx.compose.ui.unit.dp
+>>>>>>> bf3c217 (navigation):app/src/main/java/com/dmb25/jpcompose_practice/presentation/ui/home/Home.kt
 import com.dmb25.jpcompose_practice.data.local.DummyPetDataSource
 import com.dmb25.jpcompose_practice.presentation.ui.home.components.AnimalItem
 
@@ -62,8 +66,15 @@ fun HomeScreen(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
 
 }
 
+<<<<<<< HEAD:app/src/main/java/com/dmb25/jpcompose_practice/presentation/ui/home/HomeScreen.kt
 @Preview
 @Composable
 fun HomeScreenPreview() {
     HomeScreen(onToggle = {}, onPetClick = {})
+=======
+@Composable
+@Preview(showSystemUi = true)
+fun HomePreview() {
+    Home(onToggle = {}, onPetClick = {})
+>>>>>>> bf3c217 (navigation):app/src/main/java/com/dmb25/jpcompose_practice/presentation/ui/home/Home.kt
 }
