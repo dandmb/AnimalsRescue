@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dmb25.jpcompose_practice.presentation.theme.JpcomposepracticeTheme
-import com.dmb25.jpcompose_practice.presentation.ui.home.Home
+import com.dmb25.jpcompose_practice.presentation.ui.home.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JpcomposepracticeTheme {
-                Home(
+                HomeScreen(
                     onToggle = {},
                     onPetClick = {}
                 )

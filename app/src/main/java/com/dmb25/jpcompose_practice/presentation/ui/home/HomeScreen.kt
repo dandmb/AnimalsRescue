@@ -1,9 +1,7 @@
 package com.dmb25.jpcompose_practice.presentation.ui.home
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,14 +12,14 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.dmb25.jpcompose_practice.data.local.DummyPetDataSource
 import com.dmb25.jpcompose_practice.presentation.ui.home.components.AnimalItem
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
+fun HomeScreen(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -62,4 +60,10 @@ fun Home(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
         }
     }
 
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen(onToggle = {}, onPetClick = {})
 }
