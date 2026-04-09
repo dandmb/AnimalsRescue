@@ -1,5 +1,6 @@
 package com.dmb25.jpcompose_practice.presentation.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,11 +16,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dmb25.jpcompose_practice.data.local.DummyPetDataSource
 import com.dmb25.jpcompose_practice.presentation.ui.home.components.AnimalItem
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
+import com.dmb25.jpcompose_practice.presentation.ui.home.components.ErrorComponent
+import com.dmb25.jpcompose_practice.presentation.ui.home.components.LoadingComponent
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
+fun HomeScreen(
+    onToggle: () -> Unit,
+    onPetClick: (Int) -> Unit,
+    viewModel: HomeViewModel?
+    ) {
+
+    val state = viewModel?.uiState?.collectAsState()?.value
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -51,19 +62,42 @@ fun HomeScreen(onToggle: () -> Unit, onPetClick: (Int) -> Unit) {
         }) { innerPadding ->
         LazyColumn(
             contentPadding = innerPadding,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize()
         ) {
-            itemsIndexed(DummyPetDataSource.dogList) { index, pet ->
-                AnimalItem(pet = pet, onItemClick = {
-                    onPetClick(index)
-                })
+
+            when (state) {
+                is HomeUiState.Success -> {
+                    itemsIndexed(DummyPetDataSource.dogList) { index, pet ->
+                        AnimalItem(pet = pet, onItemClick = {
+                            onPetClick(index)
+                        })
+                    }
+                }
+                is HomeUiState.Loading -> {
+                    item {
+                        LoadingComponent(modifier = Modifier)
+                    }
+                }
+                is HomeUiState.Error -> {
+                    item {
+                        ErrorComponent(errorMessage = state.message, onRetry = {
+                            viewModel.getAllPets()
+                        })
+                    }
+                }
+                else -> {}
             }
+
+
         }
     }
 
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(onToggle = {}, onPetClick = {})
+    HomeScreen(onToggle = {}, onPetClick = {}, viewModel = null)
 }
