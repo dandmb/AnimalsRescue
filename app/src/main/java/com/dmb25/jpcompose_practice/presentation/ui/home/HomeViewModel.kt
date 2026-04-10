@@ -2,9 +2,9 @@ package com.dmb25.jpcompose_practice.presentation.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dmb25.jpcompose_practice.domain.usecase.DeletePetById
+import com.dmb25.jpcompose_practice.domain.usecase.DeletePetByIdUseCase
 import com.dmb25.jpcompose_practice.domain.usecase.GetAllPetsUseCase
-import com.dmb25.jpcompose_practice.domain.usecase.GetPetUseCaseById
+import com.dmb25.jpcompose_practice.domain.usecase.GetPetByIdUseCase
 import com.dmb25.jpcompose_practice.domain.usecase.UpdatePetUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val getAllPetsUseCase: GetAllPetsUseCase,
-    private val deletePetById: DeletePetById,
-    private val getPetUseCaseById: GetPetUseCaseById,
+    private val deletePetById: DeletePetByIdUseCase,
+    private val getPetByIdUseCase: GetPetByIdUseCase,
     private val updatePetUseCase: UpdatePetUseCase,
 ) : ViewModel() {
 
