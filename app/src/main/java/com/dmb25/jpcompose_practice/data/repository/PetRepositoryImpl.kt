@@ -32,8 +32,17 @@ class PetRepositoryImpl(private val dummyPet: DummyPetDataSource) : PetRepositor
         dummyPet.dogList.removeIf { it.id == id }
     }
 
-    override suspend fun updatePet(pet: Pet) {
-        TODO("Not yet impl@emented")
+    override suspend fun updatePet(pet: Pet): Pet? {
+
+        if (dummyPet.dogList.find { it.id == pet.id } == null){
+            return null
+        }else{
+            dummyPet.dogList.find { it.id == pet.id }?.let {
+                dummyPet.dogList[dummyPet.dogList.indexOf(it)] = pet
+            }
+            return dummyPet.dogList[dummyPet.dogList.indexOf(pet)]
+        }
+
     }
 
     override fun getPets(): Flow<List<Pet>> = flow{
