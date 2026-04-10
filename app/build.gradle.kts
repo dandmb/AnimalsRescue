@@ -62,4 +62,8 @@ dependencies {
     implementation(libs.koin.compose.viewmodel)
 
     implementation(libs.androidx.navigation.compose.v277)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
 }

@@ -29,11 +29,11 @@ class PetRepositoryImpl(private val dummyPet: DummyPetDataSource) : PetRepositor
     }
 
     override suspend fun deletePet(id: Int) {
-        TODO("Not yet implemented")
+        dummyPet.dogList.removeIf { it.id == id }
     }
 
     override suspend fun updatePet(pet: Pet) {
-        TODO("Not yet implemented")
+        TODO("Not yet impl@emented")
     }
 
     override fun getPets(): Flow<List<Pet>> = flow{

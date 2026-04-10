@@ -3,14 +3,14 @@ package com.dmb25.jpcompose_practice.presentation.ui.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dmb25.jpcompose_practice.domain.usecase.GetPetUseCaseById
+import com.dmb25.jpcompose_practice.domain.usecase.GetPetByIdUseCase
 import com.dmb25.jpcompose_practice.domain.usecase.UpdatePetUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
-    private val getPetUseCaseById: GetPetUseCaseById,
+    private val getPetByIdUseCase: GetPetByIdUseCase,
     private val updatePetUseCase: UpdatePetUseCase,
     savedStateHandle: SavedStateHandle,
     ): ViewModel() {
@@ -26,10 +26,10 @@ class DetailViewModel(
 
     fun getPetById(id: Int) {
         viewModelScope.launch {
-            if (getPetUseCaseById(id) == null) {
+            if (getPetByIdUseCase(id) == null) {
                 _uiState.value = DetailUiState.Error("Pet not found")
             }else{
-                _uiState.value = DetailUiState.Success(getPetUseCaseById(id)!!)
+                _uiState.value = DetailUiState.Success(getPetByIdUseCase(id)!!)
             }
         }
     }
