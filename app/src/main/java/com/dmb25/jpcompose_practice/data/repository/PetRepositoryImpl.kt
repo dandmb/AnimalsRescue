@@ -12,14 +12,10 @@ import kotlinx.coroutines.flow.flowOn
 
 class PetRepositoryImpl(private val dummyPet: DummyPetDataSource) : PetRepository {
     override fun addPet(pet: Pet) : Flow<String> = flow {
-        try {
-            emit(AddingState.ADDING.name)
-            delay(2000)
-            dummyPet.dogList.add(pet)
-            emit(AddingState.ADDED.name)
-        }catch (e: Exception){
-            emit(AddingState.FAILED.name)
-        }
+
+        emit(AddingState.ADDING.name)
+        delay(2000)
+        if(dummyPet.dogList.add(pet)) emit(AddingState.ADDED.name) else emit(AddingState.FAILED.name)
 
     }.flowOn(Dispatchers.IO)
 
