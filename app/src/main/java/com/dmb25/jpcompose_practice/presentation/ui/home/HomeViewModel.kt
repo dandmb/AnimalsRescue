@@ -8,6 +8,7 @@ import com.dmb25.jpcompose_practice.domain.usecase.GetPetByIdUseCase
 import com.dmb25.jpcompose_practice.domain.usecase.UpdatePetUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -26,13 +27,18 @@ class HomeViewModel(
 
     fun getAllPets() {
         viewModelScope.launch {
-            getAllPetsUseCase().collect { pets ->
-                try {
-                    if (pets.isEmpty()) _uiState.value = HomeUiState.Loading else _uiState.value = HomeUiState.Success(pets)
-                } catch (e: Exception) {
-                    _uiState.value = HomeUiState.Error(e.message.toString())
+
+            getAllPetsUseCase()
+                .catch { e ->
+                    _uiState.value = HomeUiState.Error(e.message ?: "Unknown error")
                 }
-            }
+                .collect { pets ->
+                    if (pets.isEmpty()) {
+                        _uiState.value = HomeUiState.Loading
+                    } else {
+                        _uiState.value = HomeUiState.Success(pets)
+                    }
+                }
         }
     }
 }
